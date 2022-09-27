@@ -13,7 +13,7 @@ class AssetRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,11 +24,13 @@ class AssetRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required', 'unique:users,email,' . optional($this->user)->id,],
-            'username' => ['required', 'unique:users,username,' . optional($this->user)->id,],
-            'name' => ['required'],
-            'password' => (empty($this->user->password)) ? ['required', Password::defaults()] : '',
-            'address' => ['required'],
+            'item_id' => ['required'],
+            'brand_id' => ['required'],
+            'type' => ['required'],            
+            'serial_number' => ['required'],
+            'purchase_date' => ['required'],
+            'owner' => ['required'],
+            'status' => ['required'],
         ];
     }
 }

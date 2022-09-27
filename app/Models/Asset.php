@@ -19,9 +19,20 @@ class Asset extends Model
         'serial_number',
         'purchase_date',
         'owner',
+        'delegation_to',
         'tag',
         'status',
         'remarks',
-        'created_by',
+        'created_by'
     ];
+
+    public function item()
+    {
+        return $this->belongsTo(Item::class, 'itemID', 'item_id');
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo(Item::class, 'brandID', 'brand_id');
+    }
 }
